@@ -1,0 +1,71 @@
+        <!-- Danh sách sản phẩm -->
+        <h2>Danh sách Sản phẩm</h2>
+        <table>
+            <tr>
+                <th>Tên sản phẩm</th>
+                <th>Mô tả</th>
+                <th>Giá</th>
+                <th>Danh mục</th>
+                <th>Đánh giá quản trị</th>
+                <th>Biểu đồ đánh giá</th>
+                <th>Hành động</th>
+            </tr>
+            {% for product in products %}
+            <tr>
+                <td>{{ product['name'] }}</td>
+                <td>{{ product['description'] }}</td>
+                <td>{{ product['price'] }}</td>
+                <td>{{ product['category_name'] }}</td>
+                <td>
+                    <form method="GET" style="display:inline;">
+                        <input type="hidden" name="product_id" value="{{ product['product_id'] }}">
+                        <button type="submit">Xem bình luận</button>
+                    </form>
+                </td>
+                <td>
+                    <canvas id="barChart{{ product['product_id'] }}" class="barChart"></canvas>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+
+    <!-- Nút tải về toàn bộ bình luận -->
+    <a href="{{ url_for('download_all_reviews') }}">Tải về toàn bộ bình luận</a>
+
+    <!-- Danh sách bình luận -->
+    {% if selected_product_id %}
+    <h2>Bình luận cho sản phẩm ID {{ selected_product_id }}</h2>
+    <table>
+        <tr>
+            <th>Sản phẩm</th>
+            <th>Khách hàng</th>
+            <th>Đánh giá</th>
+            <th>Bình luận</th>
+            <th>Cảm xúc</th>
+            <th>Đánh giá quản trị</th>
+            <th>Ngày bình luận</th>
+        </tr>
+        {% for review in all_reviews %}
+        <tr>
+            <td>{{ review['name'] }}</td>
+            <td>{{ review['user_id'] }}</td>
+            <td>{{ review['rating'] }}</td>
+            <td>{{ review['comment'] }}</td>
+            <td>{{ review['sentiment_ai'] }}</td>
+            <td>
+                <form method="POST" style="display:inline;">
+                    <input type="hidden" name="review_id" value="{{ review['review_id'] }}">
+                    <select name="admin_sentiment">
+                        <option value="Tích cực" {% if review['admin_sentiment'] == 'Tích cực' %}selected{% endif %}>Tích cực</option>
+                        <option value="Trung lập" {% if review['admin_sentiment'] == 'Trung lập' %}selected{% endif %}>Trung lập</option>
+                        <option value="Tiêu cực" {% if review['admin_sentiment'] == 'Tiêu cực' %}selected{% endif %}>Tiêu cực</option>
+                    </select>
+                    <button type="submit">Cập nhật</button>
+                </form>
+            </td>
+            <td>{{ review['review_date'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}

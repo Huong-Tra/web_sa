@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/spchitiet.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <i class='bx bx-menu'></i>
+            <div class="logo">
+                <a href="/"><img src="logo1.svg" alt="Logo"></a>
+            </div>
+            <div class="nav-links">
+                <ul class="links">
+                    <!-- DI ĐỘNG -->
+                    <li>
+                        <a href="/categories/1">DI ĐỘNG</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="#">Hãng sản xuất</a>
+                                <ul class="sub">
+                                    <li><a href="apple.html">IPHONE</a></li>
+                                    <li><a href="samsung.html">SAMSUNG</a></li>
+                                    <li><a href="oppo.html">OPPO</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Mức giá</a>
+                                <ul class="sub">
+                                    <li><a href="#">Dưới 10 triệu</a></li>
+                                    <li><a href="#">Từ 10 - 20 triệu</a></li>
+                                    <li><a href="#">Trên 20 triệu</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Hình ảnh</a>
+                                <ul class="sub">
+                                    <li><a href="apple.html"><img src="apple.jpg" alt=""> A</a></li>
+                                    <li><a href="samsung.html"><img src="samsung.jpg" alt=""> B</a></li>
+                                    <li><a href="oppo.html"><img src="oppo.jpg" alt=""> C</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+        
+                    <!-- MÁY TÍNH BẢNG -->
+                    <li>
+                        <a href="/categories/2">MÁY TÍNH BẢNG</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="#">Hãng sản xuất</a>
+                                <ul class="sub">
+                                    <li><a href="apple.html">IPHONE</a></li>
+                                    <li><a href="samsung.html">SAMSUNG</a></li>
+                                    <li><a href="oppo.html">OPPO</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Mức giá</a>
+                                <ul class="sub">
+                                    <li><a href="#">Dưới 10 triệu</a></li>
+                                    <li><a href="#">Từ 10 - 20 triệu</a></li>
+                                    <li><a href="#">Trên 20 triệu</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Hình ảnh</a>
+                                <ul class="sub">
+                                    <li><a href="apple.html"><img src="apple.jpg" alt=""> A</a></li>
+                                    <li><a href="samsung.html"><img src="samsung.jpg" alt=""> B</a></li>
+                                    <li><a href="oppo.html"><img src="oppo.jpg" alt=""> C</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+        
+                    <!-- PHỤ KIỆN -->
+                    <li>
+                        <a href="/categories/3">PHỤ KIỆN</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="#">Nhẫn</a>
+                                <ul class="sub">
+                                    <li><a href="nhan.html">Nhẫn</a></li>
+                                    <li><a href="dongho.html">Đồng hồ thông minh</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Đồng hồ thông minh</a>
+                                <ul class="sub">
+                                    <li><a href="nhan.html">Nhẫn</a></li>
+                                    <li><a href="dongho.html">Đồng hồ thông minh</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Âm thanh</a>
+                                <ul class="sub">
+                                    <li><a href="nhan.html">Nhẫn</a></li>
+                                    <li><a href="dongho.html">Đồng hồ thông minh</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+        
+                    <!-- ƯU ĐÃI -->
+                    <li>
+                        <a href="uudai.html">ƯU ĐÃI</a>
+                        <ul class="sub-menu1">
+                            <li><a href="#">Mới</a></li>
+                            <li><a href="#">Deal hot</a></li>
+                            <li><a href="#">Độc quyền</a></li>
+                        </ul>
+                    </li>
+        
+                    <!-- HỖ TRỢ -->
+                    <li>
+                        <a href="hotro.html">HỖ TRỢ</a>
+                        <ul class="sub-menu1">
+                            <li><a href="#">Bảo hành và sửa chữa</a></li>
+                            <li><a href="#">Hỗ trợ sản phẩm</a></li>
+                        </ul>
+                    </li>
+        
+                    <li><a href="cuahang.html">CỬA HÀNG</a></li>
+                </ul>
+            </div>
+        
+        
+            
+            <!-- Order and Account Section -->
+            <div class="order-button">
+                <a href="giohang.html"><a href="/cart"><label class="cart-icon"><i class="fas fa-shopping-cart"></i></label></a>
+                <div class="taikhoan"> <label class="user-icon"><i class="fas fa-user"></i></label>
+                    {% if session['email'] %}
+                        <a href="taikhoan.html">{{ session['username'] }}</a>
+                        <ul>
+                            <li><a href="/lichsudonhang">Đơn hàng</a></li>
+                            <li><a href="/logout">Đăng xuất</a></li>
+                        </ul>
+                    {% else %}
+                        <a href="taikhoan.html"></a>
+                        <ul>
+                            <li><a href="#">Chào mừng bạn </a></li>
+                            <li><a href="/dangnhap">Đăng nhập/Đăng kí</a></li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="spdl">
+        <div class="ndsp">
+            <div class="hasp">
+                <img src="{{ product['image_url'] }}" alt="Hình ảnh sản phẩm">
+                {% if has_purchased %}
+                <span class="tag-purchased">Đã mua</span>  <!-- Thêm tag đã mua -->
+                {% endif %}
+            </div>
+            <div class="ndcsp">
+                <h1>{{ product['name'] }}</h1>
+                
+                <div class="dlsp">
+                    {% for storage, price in zip(product['storage_options'], product['price_options']) %}
+                        <div class="storage-option" id="storage-{{ storage }}" data-price="{{ price }}" onclick="selectStorage('{{ storage }}', {{ price }})">
+                            {{ storage }}GB
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="mssp">
+                    {% for color in product['all_colors'] %}
+                        <div class="color-option" style="background-color: {{ color | lower }};" id="color-{{ color }}" onclick="selectColor('{{ color }}')"></div>
+                    {% endfor %}
+                </div>
+                <div class="gia">
+                    <div>Giá: 
+                        <span id="price-display">{{ product['price'] }}₫</span>
+                    </div>
+                </div>
+                <div class="quantity-selector">
+                    <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
+                    <input type="number" id="quantity" value="1" min="1">
+                    <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+                </div>
+                <div class="nutdh">
+                    <a href="/dathangtt"><button class="buy-now-btn" onclick="buynow()">Mua ngay</button></a>
+                    <button id="add-to-cart-btn" onclick="addToCart()">Thêm vào giỏ hàng</button>
+                    {% if has_purchased_4 %}
+                    <a href="/donhang/{{order_id}}/danhgia" class="danhgia"><button class="buy-now-btn">Đánh giá</button></a>  <!-- Nút đánh giá -->
+                    {% elif has_purchased_6 %}
+                    <a href="/donhang/{{order_id}}/suadanhgia" class="danhgia"><button class="buy-now-btn">Sửa đánh giá</button></a>  <!-- Nút đánh giá -->
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <div class="ud">Ưu đãi độc quyền</div>
+    <div class="uudaisp">
+                <div class="uudai1">
+                    <div>
+                        <h2>Thu cũ đổi mới</h2>
+                        <p>Thu cũ đổi mới hỗ trợ thêm 3 triệu
+                            Áp dụng với một số sản phẩm nhất định</p>
+                    </div>
+                    <div>
+                        <h2>Bảo hành 1 đổi 1 trong vòng 15 ngày</h2>
+                        <p>Miễn phí 1 năm bảo vệ toàn diện trị giá đến 9,5 triệu</p>
+                    </div>
+                    <div>
+                        <h2>Quà tặng kèm</h2>
+                        <p>Tặng ngay Galaxy Watch FE đến hết 30/09
+                            Số lượng có hạn!</p>
+                    </div>
+                </div>
+                <div class="uudai1">
+                    <div>
+                        <h2>Ưu đãi mua kèm</h2>
+                        <p>Giảm đến 2,5 triệu khi mua kèm Watch Ultra, 2 triệu khi mua kèm Watch7 và 600k khi mua kèm Buds3</p>
+                    </div>
+                    <div>
+                        <h2>Hoàn tiền khi thanh toán qua MOMO</h2>
+                        <p>Hoàn ngay 1 triệu khi thanh toán qua MoMo
+                            Giới hạn chỉ dành cho 60 đơn hàng đầu tiên</p>
+                    </div>
+                    <div>
+                        <h2>Đơn hàng đầu tiên</h2>
+                        <p>Áp dụng cho đơn hàng đầu tiên mua trên Shop App
+                            Giảm ngay 5% tối đa 1 triệu</p>
+                    </div>
+                </div>
+    </div>
+    <main>
+        <section class="review-section">
+            <div class="review-content">
+                <div class="review-header">
+                    <h2>Đánh giá {{ product['average_rating'] }} / 5</h2>
+                    <div class="star-rating">
+                        {% for i in range(5) %}
+                            <i class="fas fa-star {% if i < product.get('average_rating', 0) | int %}active{% endif %}"></i>
+                        {% endfor %}
+                    </div>
+                    
+                    
+                    <div class="review-count">
+                        ({{ product['review_count'] }} đánh giá)
+                    </div>
+                </div>
+        
+                <div class="review-details">
+                    <ul>
+                        {% for i in range(5, 0, -1) %}
+                            <li>
+                                <strong>
+                                    <span class="stars">
+                                        {% for star in range(5) %}
+                                            <i class="fas fa-star {% if star >= i %}inactive{% endif %}"></i>
+                                        {% endfor %}
+                                    </span>
+                                </strong> 
+                                {{ rating_counts[i] }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        
+        
+            <div class="review-summary">
+                <div class="title">Tóm tắt cảm xúc từ các đánh giá</div>
+                <div class="text">
+                    <h3>Về sản phẩm: ({{ sentiment_counts['Tích cực'] }} tích cực, {{ sentiment_counts['Tiêu cực'] }} tiêu cực)</h3>
+                    
+                    <ul>
+                        <li>
+                            <span class="fas fa-thumbs-up liked"></span>
+                            {{ product['positive_summary'] }}
+                        </li>
+                        <li>
+                            <span class="fas fa-thumbs-down disliked"></span>
+                            {{ product['negative_summary'] }}
+                        </li>
+                    </ul>
+                </div>
+               
+            </div>
+
+          
+        </section>
+                <div class="filter-buttons">
+                    <p>Lọc theo cảm xúc</p>
+                    <button onclick="filterReviews('')">Tất cả</button>
+                    <button onclick="filterReviews('Tích cực')">Tích cực</button>
+                    <button onclick="filterReviews('Trung lập')">Trung lập</button>
+                    <button onclick="filterReviews('Tiêu cực')">Tiêu cực</button>
+                </div>
+                
+                
+                
+        <div class="reviews-list">
+            <!-- Loop through reviews and display them -->
+            {% if reviews %}
+                <ul>
+                    {% for review in filtered_reviews %}
+                        <li class="review-item">
+                            <div class="review-user-info">
+                                <strong>Người dùng:</strong> {{ review['user_id'] }}<br>
+                                <strong>Cảm xúc (Người dùng):</strong> {{ review['sentiment'] }}<br>
+                                <strong>Cảm xúc AI:</strong> {{ review['sentiment_ai'] }}<br>
+                            </div>
+                            <div class="review-details">
+                                <div class="review-text">
+                                    <span class="label"> <span class="stari">
+                                        {% for i in range(5) %}
+                                            <i class="fas fa-star {% if i < review['rating'] %}active{% endif %}"></i>
+                                        {% endfor %}
+                                    </span>
+                                </span> 
+                                <br>
+                                    <span class="label">Bình luận:</span> {{ review['comment'] }}<br>
+                                    <span class="label">Ngày đánh giá:</span> {{ review['review_date'] }}
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Chưa có đánh giá nào cho sản phẩm này.</p>
+            {% endif %}
+        </div>
+
+    </main>
+    
+    <script>
+        function selectStorage(storage, price) {
+        // Cập nhật giá theo dung lượng được chọn
+        document.getElementById('price-display').textContent = price + '₫';
+    
+        // Lấy tất cả các tùy chọn màu sắc
+        const colorOptions = document.querySelectorAll('.color-option');
+    
+        // Ẩn tất cả màu sắc trước
+        colorOptions.forEach(option => {
+            option.style.display = 'none';
+        });
+    
+        // Hiển thị màu sắc tương ứng với dung lượng đã chọn
+        if (storage) {
+            // Lấy màu sắc tương ứng với dung lượng
+            const colorsForStorage = {{ product['colors'] | tojson }};
+            const selectedColors = colorsForStorage[storage] || [];
+    
+            selectedColors.forEach(color => {
+                const colorOption = document.getElementById('color-' + color);
+                if (colorOption) {
+                    colorOption.style.display = 'block'; // Hiển thị màu sắc tương ứng
+                    colorOption.setAttribute('data-storage', storage); // Gán dung lượng cho màu sắc
+                }
+            });
+        } else {
+            // Nếu không có dung lượng được chọn, hiển thị tất cả màu sắc
+            colorOptions.forEach(option => {
+                option.style.display = 'block'; // Hiển thị tất cả màu sắc
+            });
+        }
+    
+        // Xóa active cho các tùy chọn dung lượng khác
+        const storageOptions = document.querySelectorAll('.storage-option');
+        storageOptions.forEach(option => {
+            option.classList.remove('active'); // Xóa lớp active
+        });
+    
+        // Thêm lớp active cho tùy chọn dung lượng được chọn
+        const selectedStorageOption = document.getElementById('storage-' + storage);
+        if (selectedStorageOption) {
+            selectedStorageOption.classList.add('active'); // Thêm lớp active
+        }
+    }
+    
+    function selectColor(color) {
+        // Cập nhật màu sắc đã chọn
+        const selectedColorOption = document.querySelectorAll('.color-option');
+        
+        selectedColorOption.forEach(option => {
+            option.classList.remove('selected'); // Xóa lớp selected cho tất cả
+        });
+    
+        const currentColorOption = document.getElementById('color-' + color);
+        if (currentColorOption) {
+            currentColorOption.classList.add('selected'); // Thêm lớp selected cho màu đã chọn
+        }
+    
+        // Thêm logic xử lý nếu cần (ví dụ: lưu trữ thông tin về dung lượng)
+        const selectedStorage = currentColorOption.getAttribute('data-storage');
+        console.log("Màu sắc đã chọn:", color);
+        console.log("Dung lượng tương ứng:", selectedStorage);
+    }
+    
+    
+                 function increaseQuantity() {
+                    var quantityInput = document.getElementById('quantity');
+                    quantityInput.value = parseInt(quantityInput.value) + 1;
+                }
+                
+                function decreaseQuantity() {
+                    var quantityInput = document.getElementById('quantity');
+                    if (quantityInput.value > 1) {
+                        quantityInput.value = parseInt(quantityInput.value) - 1;
+                    }
+                }
+    
+    </script>
+    <style>
+        .hasp {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tag-purchased {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #ff5050; /* Màu nền nổi bật */
+            color: white; /* Màu chữ */
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 10; /* Đảm bảo tag hiển thị trên hình ảnh */
+        }
+
+        .storage-option.active {
+            border: 2px solid blue; /* Nổi bật tùy chọn dung lượng được chọn */
+        }
+        
+        .color-option {
+            width: 40px; /* Đặt chiều rộng cho các tùy chọn màu */
+            height: 40px; /* Đặt chiều cao cho các tùy chọn màu */
+            border-radius: 50%; /* Làm cho các tùy chọn màu trở thành hình tròn */
+            display: inline-block; /* Hiển thị các tùy chọn màu ngang hàng */
+            cursor: pointer; /* Con trỏ thay đổi khi di chuột vào */
+            transition: transform 0.2s; /* Hiệu ứng chuyển động khi chọn màu */
+        }
+    
+        .color-option.selected {
+            transform: scale(1.1); /* Phóng to màu sắc đã chọn */
+            border: 2px solid blue; /* Thêm viền cho màu đã chọn */
+        }
+    </style>
+    <script>
+        function addToCart() {
+        const selectedStorage = document.querySelector('.storage-option.active');
+        const selectedColor = document.querySelector('.color-option.selected');
+        const quantity = document.getElementById('quantity').value;
+
+        if (!selectedStorage || !selectedColor) {
+            alert("Vui lòng chọn dung lượng và màu sắc!");
+            return;
+        }
+
+        const storage = selectedStorage.id.split('-')[1];
+        const color = selectedColor.id.split('-')[1];
+        const price = selectedStorage.getAttribute('data-price');
+
+        const cartItem = {
+            storage: storage,
+            color: color,
+            quantity: quantity,
+            price: price,
+            product_id: '{{ product.product_id }}' // ID sản phẩm
+        };
+
+        fetch('/add-to-cart', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(cartItem)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert("Đã thêm vào giỏ hàng!");
+            } else if (data.redirect) {
+                alert(data.message); // Hiển thị thông báo (nếu cần)
+                window.location.href = data.redirect; // Chuyển hướng
+            } else {
+                alert("Có lỗi xảy ra: " + (data.error || "Không rõ lỗi."));
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    </script>
+    <script>
+        function filterReviews(sentiment) {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (sentiment) {
+                urlParams.set('sentiment_filter', sentiment);
+            } else {
+                urlParams.delete('sentiment_filter'); // Xóa nếu là tất cả
+            }
+            window.location.search = urlParams.toString(); // Reload trang với tham số mới
+        }
+    </script>
+<script>
+    function buynow() {
+    // Lấy thông tin dung lượng, màu sắc và số lượng người dùng đã chọn
+    const selectedStorage = document.querySelector('.storage-option.active');
+    const selectedColor = document.querySelector('.color-option.selected');
+    const quantity = document.getElementById('quantity').value;
+    
+    // Kiểm tra xem người dùng đã chọn đủ dung lượng và màu sắc chưa
+    if (!selectedStorage || !selectedColor) {
+        alert("Vui lòng chọn dung lượng và màu sắc!");
+        return;
+    }
+
+    // Lấy giá trị dung lượng, màu sắc và giá của sản phẩm
+    const storage = selectedStorage.id.split('-')[1];  // Lấy dung lượng từ id
+    const color = selectedColor.id.split('-')[1];      // Lấy màu sắc từ id
+    const price = selectedStorage.getAttribute('data-price'); // Lấy giá từ option được chọn
+    const product_id = '{{ product.product_id }}'; // ID sản phẩm (được truyền từ Flask vào HTML)
+
+    // Tạo đối tượng dữ liệu cần gửi đi
+    const data = {
+        product_id: product_id,
+        storage: storage,
+        color: color,
+        quantity: quantity,
+        price: price
+    };
+
+    // Gửi yêu cầu AJAX bằng fetch
+    fetch('/dathangtt', {
+        method: 'POST',  // Sử dụng POST
+        headers: {
+            'Content-Type': 'application/json'  // Chỉ ra rằng bạn đang gửi dữ liệu JSON
+        },
+        body: JSON.stringify(data)  // Chuyển đối tượng thành JSON
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            window.location.href = "/dathangtt";  // Chuyển hướng đến trang giỏ hàng nếu thành công
+        } else {
+            alert("Có lỗi xảy ra: " + (data.error || "Không rõ lỗi."));
+        }
+    })
+    .catch(error => {
+        console.error('Lỗi:', error);
+        alert("Đã xảy ra lỗi khi gửi yêu cầu.");
+    });
+}
+
+</script>
+    
+
+    
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/qldonhang.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="pcoded-navbar"> 
+        <div class="navbar-wrapper">
+            <div class="navbar-content scroll-div">
+                <div class="">
+                    <div class="main-menu-header">
+                        <!-- Thông tin quản trị viên (nếu cần) -->
+                        Quản trị viên
+                    </div>
+                </div>
+                <ul class="nav pcoded-inner-navbar">
+                    <!-- Bảng điều khiển -->
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Điều hướng</label>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/admin/" class="nav-link">
+                            <span class="pcoded-micon"></span>
+                            <span class="pcoded-mtext">Bảng điều khiển</span>
+                        </a>
+                    </li>
+                    <!-- Mục quản lý -->
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Quản lý</label>
+                    </li>
+                    <!-- Quản lý danh mục -->
+                    <li class="nav-item management-item">                        
+                        <a href="/admin/category" class="nav-link">
+                            <span class="pcoded-micon"></span>
+                            <span class="pcoded-mtext">Quản lý danh mục</span>
+                        </a>
+                    </li>
+                    <!-- Quản lý sản phẩm -->
+                    <li class="nav-item management-item">
+                        <a href="/admin/products" class="nav-link">
+                            <span class="pcoded-micon"></span>
+                            <span class="pcoded-mtext">Quản lý sản phẩm</span>
+                        </a>
+                    </li>
+                    <li class="nav-item management-item">
+                        <a href="/admin/users" class="nav-link"><span class="pcoded-micon"></span><span class="pcoded-mtext">Quản lý người dùng</span></a>
+                    </li>
+                    <li class="nav-item management-item">
+                        <a href="/admin/comments" class="nav-link"><span class="pcoded-micon"></span><span class="pcoded-mtext">Quản lý bình luận</span></a>
+                    </li>
+                    <li class="nav-item management-item">
+                        <a href="/admin/qldonhang" class="nav-link"><span class="pcoded-micon"></span><span class="pcoded-mtext">Quản lý đơn hàng</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="pcoded-main-container">
+    <div class="row">
+        <div class="col-xl-12" id="add-cart">
+            <div class="card" >
+                <section id="history-title">
+                    <h1>Lịch sử đơn hàng</h1>
+                </section>
+                <div class="history-container">
+                    <table class="order-statuses">
+                        <tr>
+                            <th><a href="/admin/qldonhang/" class="filter-order-status">Tất cả</a></th>
+                            {% for status in order_statuses %}
+                            <th><a href="/admin/qldonhang/{{ status.status_id }}" class="filter-order-status">{{ status.status_name }}</a></th>
+                            {% endfor %}
+                        </tr>
+                    </table>
+                    <table class="order-details">
+                        <tr>
+                            <th>ID</th>
+                            <th>Ngày đặt</th>
+                            <th>Tổng tiền</th>
+                            <th>Trạng thái</th>
+                            <th>Hành động</th> <!-- Thêm cột Hành động -->
+                            <th>Xem chi tiết</th>
+                        </tr>
+                        {% if orders %}
+                          {% for order in orders %}
+                            <tr>
+                                <td>{{ order.order_id }}</td>
+                                <td>{{ order.created_at }}</td>
+                                <td>{{ order.total_amount }} đ</td>
+                                <td>{{ order.status_name }}</td>
+                                <td>
+                                    {% if order.status_name == 'Chờ xác nhận' %}
+                                        <form method="POST" action="/admin/update_order_status/{{ order.order_id }}">
+                                            <input type="hidden" name="new_status" value="Đã xác nhận">
+                                            <button type="submit" class="action-button">Xác nhận</button>
+                                        </form>
+                                    {% elif order.status_name == 'Đã xác nhận' %}
+                                        <form method="POST" action="/admin/update_order_status/{{ order.order_id }}">
+                                            <input type="hidden" name="new_status" value="Đang giao">
+                                            <button type="submit" class="action-button">Giao hàng</button>
+                                        </form>
+                                    {% elif order.status_name == 'Đang giao' %}
+                                        <form method="POST" action="/admin/update_order_status/{{ order.order_id }}">
+                                            <input type="hidden" name="new_status" value="Giao thành công">
+                                            <button type="submit" class="action-button">Đã giao hàng</button>
+                                        </form>
+                                    {% elif order.status_name == 'Đã hủy' %}
+                                        <span>Đơn hàng đã bị hủy</span>
+                                    {% endif %}
+                                </td>                                
+                                <td><a href="/donhang/{{ order.order_id }}" class="xemdonhang">Xem</a></td>
+                            </tr>
+                          {% endfor %}
+                        {% else %}
+                          <tr>
+                            <td colspan="6">Không có đơn hàng nào.</td>
+                          </tr>
+                        {% endif %}
+                    </table>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Lắng nghe sự kiện submit trên form
+        $('form').on('submit', function(event) {
+            event.preventDefault(); // Ngăn chặn tải lại trang
+
+            var form = $(this);
+            var actionUrl = form.attr('action'); // Lấy URL từ thuộc tính action của form
+
+            $.ajax({
+                type: 'POST',
+                url: actionUrl,
+                data: form.serialize(), // Chuyển đổi dữ liệu của form thành chuỗi
+                success: function(response) {
+                    if (response.success) {
+                    }
+                },
+                error: function() {
+                    alert('Đã xảy ra lỗi trong quá trình cập nhật.'); // Thông báo lỗi chung
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

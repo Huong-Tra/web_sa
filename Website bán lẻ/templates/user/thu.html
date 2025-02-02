@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product['name'] }} - Sản Phẩm</title>
+    <link rel="stylesheet" href="/static/css/thu.css">
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <i class='bx bx-menu'></i>
+            <div class="logo">
+                <a href="/"><img src="logo1.svg" alt="Logo"></a>
+            </div>
+            <div class="nav-links">
+                <ul class="links">
+                    <!-- DI ĐỘNG -->
+                    <li>
+                        <a href="/categories/1">DI ĐỘNG</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="#">Hãng sản xuất</a>
+                                <ul class="sub">
+                                    <li><a href="apple.html">IPHONE</a></li>
+                                    <li><a href="samsung.html">SAMSUNG</a></li>
+                                    <li><a href="oppo.html">OPPO</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Mức giá</a>
+                                <ul class="sub">
+                                    <li><a href="#">Dưới 10 triệu</a></li>
+                                    <li><a href="#">Từ 10 - 20 triệu</a></li>
+                                    <li><a href="#">Trên 20 triệu</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Hình ảnh</a>
+                                <ul class="sub">
+                                    <li><a href="apple.html"><img src="apple.jpg" alt=""> A</a></li>
+                                    <li><a href="samsung.html"><img src="samsung.jpg" alt=""> B</a></li>
+                                    <li><a href="oppo.html"><img src="oppo.jpg" alt=""> C</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+        
+                    <!-- MÁY TÍNH BẢNG -->
+                    <li>
+                        <a href="/categories/2">MÁY TÍNH BẢNG</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="#">Hãng sản xuất</a>
+                                <ul class="sub">
+                                    <li><a href="apple.html">IPHONE</a></li>
+                                    <li><a href="samsung.html">SAMSUNG</a></li>
+                                    <li><a href="oppo.html">OPPO</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Mức giá</a>
+                                <ul class="sub">
+                                    <li><a href="#">Dưới 10 triệu</a></li>
+                                    <li><a href="#">Từ 10 - 20 triệu</a></li>
+                                    <li><a href="#">Trên 20 triệu</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Hình ảnh</a>
+                                <ul class="sub">
+                                    <li><a href="apple.html"><img src="apple.jpg" alt=""> A</a></li>
+                                    <li><a href="samsung.html"><img src="samsung.jpg" alt=""> B</a></li>
+                                    <li><a href="oppo.html"><img src="oppo.jpg" alt=""> C</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+        
+                    <!-- PHỤ KIỆN -->
+                    <li>
+                        <a href="/categories/3">PHỤ KIỆN</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="#">Nhẫn</a>
+                                <ul class="sub">
+                                    <li><a href="nhan.html">Nhẫn</a></li>
+                                    <li><a href="dongho.html">Đồng hồ thông minh</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Đồng hồ thông minh</a>
+                                <ul class="sub">
+                                    <li><a href="nhan.html">Nhẫn</a></li>
+                                    <li><a href="dongho.html">Đồng hồ thông minh</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Âm thanh</a>
+                                <ul class="sub">
+                                    <li><a href="nhan.html">Nhẫn</a></li>
+                                    <li><a href="dongho.html">Đồng hồ thông minh</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+        
+                    <!-- ƯU ĐÃI -->
+                    <li>
+                        <a href="uudai.html">ƯU ĐÃI</a>
+                        <ul class="sub-menu1">
+                            <li><a href="#">Mới</a></li>
+                            <li><a href="#">Deal hot</a></li>
+                            <li><a href="#">Độc quyền</a></li>
+                        </ul>
+                    </li>
+        
+                    <!-- HỖ TRỢ -->
+                    <li>
+                        <a href="hotro.html">HỖ TRỢ</a>
+                        <ul class="sub-menu1">
+                            <li><a href="#">Bảo hành và sửa chữa</a></li>
+                            <li><a href="#">Hỗ trợ sản phẩm</a></li>
+                        </ul>
+                    </li>
+        
+                    <li><a href="cuahang.html">CỬA HÀNG</a></li>
+                </ul>
+            </div>
+        
+        
+            
+            <!-- Order and Account Section -->
+            <div class="order-button">
+                <a href="giohang.html"><a href="/cart"><label class="cart-icon"><i class="fas fa-shopping-cart"></i></label></a>
+                <div class="taikhoan"> <label class="user-icon"><i class="fas fa-user"></i></label>
+                    {% if session['email'] %}
+                        <a href="taikhoan.html">{{ session['username'] }}</a>
+                        <ul>
+                            <li><a href="/lichsudonhang">Đơn hàng</a></li>
+                            <li><a href="/logout">Đăng xuất</a></li>
+                        </ul>
+                    {% else %}
+                        <a href="taikhoan.html"></a>
+                        <ul>
+                            <li><a href="#">Chào mừng bạn </a></li>
+                            <li><a href="/dangnhap">Đăng nhập/Đăng kí</a></li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="spdl">
+        <div class="ndsp">
+            <div class="hasp">
+                <img src="{{ product['image_url'] }}" alt="{{ product['name'] }}">
+            </div>
+            <div class="ndcsp">
+                <h1>{{ product['name'] }}</h1>
+                <p id="productDescription" class="product-description">{{ product['description'] }}</p>
+               <!-- Hiển thị các lựa chọn dung lượng -->
+                <div class="dlsp">
+                    {% if product.storage_options %}
+                        {% for storage, price in zip(product.storage_options, product.price_options) %}
+                            <button type="button" class="storage-option" onclick="updatePrice({{ product.product_id }}, {{ price }})">
+                                {{ storage }} GB
+                            </button>
+                        {% endfor %}
+                    {% else %}
+                        <p>Không có lựa chọn dung lượng.</p>
+                    {% endif %}
+                </div>
+
+                <!-- Hiển thị các lựa chọn màu sắc -->
+                <div class="mssp">
+                    {% if product.colors %}
+                        {% for color in product.colors %}
+                            <label for="color_{{ product.product_id }}_{{ loop.index }}" class="color-option" style="background-color: {{ color }};"></label>
+                        {% endfor %}
+                    {% else %}
+                        <p>Không có lựa chọn màu sắc.</p>
+                    {% endif %}
+                </div>
+
+    
+                <div class="gia">
+                    <div>Giá: <span id="price_{{ product.product_id }}">{{ product['price_options'][0] }} VND</span>
+                </div>
+    
+                <div class="quantity-selector">
+                    <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
+                    <input type="number" id="quantity" value="1" min="1">
+                    <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+                </div>
+    
+                <div class="nutdh">
+                    <button class="buy-now-btn">Mua ngay</button>
+                    <button class="add-cart-btn" onclick="addToCart({{ product.product_id }})">Thêm giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    
+    
+    <div class="ud">Ưu đãi độc quyền</div>
+    <div class="uudaisp">
+                <div class="uudai1">
+                    <div>
+                        <h2>Thu cũ đổi mới</h2>
+                        <p>Thu cũ đổi mới hỗ trợ thêm 3 triệu
+                            Áp dụng với một số sản phẩm nhất định</p>
+                    </div>
+                    <div>
+                        <h2>Bảo hành 1 đổi 1 trong vòng 15 ngày</h2>
+                        <p>Miễn phí 1 năm bảo vệ toàn diện trị giá đến 9,5 triệu</p>
+                    </div>
+                    <div>
+                        <h2>Quà tặng kèm</h2>
+                        <p>Tặng ngay Galaxy Watch FE đến hết 30/09
+                            Số lượng có hạn!</p>
+                    </div>
+                </div>
+                <div class="uudai1">
+                    <div>
+                        <h2>Ưu đãi mua kèm</h2>
+                        <p>Giảm đến 2,5 triệu khi mua kèm Watch Ultra, 2 triệu khi mua kèm Watch7 và 600k khi mua kèm Buds3</p>
+                    </div>
+                    <div>
+                        <h2>Hoàn tiền khi thanh toán qua MOMO</h2>
+                        <p>Hoàn ngay 1 triệu khi thanh toán qua MoMo
+                            Giới hạn chỉ dành cho 60 đơn hàng đầu tiên</p>
+                    </div>
+                    <div>
+                        <h2>Đơn hàng đầu tiên</h2>
+                        <p>Áp dụng cho đơn hàng đầu tiên mua trên Shop App
+                            Giảm ngay 5% tối đa 1 triệu</p>
+                    </div>
+                </div>
+    </div>
+
+    <main>
+        
+
+        <form action="/product/{{ product['product_id'] }}/add_review" method="POST">
+            <div>
+                <label for="rating">Đánh giá:</label>
+                <input type="number" id="rating" name="rating" min="1" max="5" required>
+            </div>
+            <div>
+                <label for="comment">Bình luận:</label>
+                <textarea id="comment" name="comment" required></textarea>
+            </div>
+            <div>
+                <label for="sentiment">Cảm xúc:</label>
+                <select id="sentiment" name="sentiment" required>
+                    <option value="Tích cực">Tích cực</option>
+                    <option value="Trung lập">Trung lập</option>
+                    <option value="Tiêu cực">Tiêu cực</option>
+                </select>
+            </div>
+            <button type="submit">Gửi bình luận</button>
+        </form>
+
+        <section class="review-section">
+            <div class="review-content">
+                <div class="review-header">
+                    <h2>Đánh giá</h2>
+                    <div class="star-rating">
+                        {% for i in range(5) %}
+                            <i class="fas fa-star {% if i < product.average_rating %}active{% endif %}"></i>
+                        {% endfor %}
+                    </div>
+                    <div class="average-rating">
+                        <strong>Điểm trung bình:</strong> {{ product.average_rating | round(1) }} / 5
+                    </div>
+                    <div class="review-count">
+                        ({{ review_count }} đánh giá)
+                    </div>
+                </div>
+        
+                <div class="review-details">
+                    <ul>
+                        {% for i in range(5, 0, -1) %}
+                            <li>
+                                <strong>Điểm {{ i }}:</strong> {{ rating_counts[i] }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        
+        
+            <div class="review-summary">
+                <div class="title">Tóm tắt cảm xúc từ các đánh giá</div>
+                <div class="text">
+                    <h3>Về sản phẩm: ({{ sentiment_counts['Tích cực'] }} tích cực, {{ sentiment_counts['Tiêu cực'] }} tiêu cực)</h3>
+                    <ul>
+                        <li>
+                            <span class="icon fas fa-check"></span>
+                            {{ summary['positive_summary'] }}
+                        </li>
+                        <li>
+                            <span class="icon fas fa-times negative"></span>
+                            {{ summary['negative_summary'] }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="thumbs-container">
+                <button class="fas fa-thumbs-up liked"></button>
+                <button class="fas fa-thumbs-down disliked"></button>
+            </div>
+        </section>
+
+        <div class="reviews-list">
+            <!-- Loop through reviews and display them -->
+            {% if reviews %}
+                <ul>
+                    {% for review in reviews %}
+                        <li class="review-item">
+                            <div class="review-user-info">
+                                <strong>Người dùng:</strong> {{ review['user_id'] }}<br>
+                                <strong>Cảm xúc (Người dùng):</strong> {{ review['sentiment'] }}<br>
+                                <strong>Cảm xúc AI:</strong> {{ review['sentiment_ai'] }}<br>
+                            </div>
+                            <div class="review-details">
+                                <div class="review-text">
+                                    <span class="label">Điểm đánh giá:</span> {{ review['rating'] }}<br>
+                                    <span class="label">Bình luận:</span> {{ review['comment'] }}<br>
+                                    <span class="label">Ngày đánh giá:</span> {{ review['review_date'] }}
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Chưa có đánh giá nào cho sản phẩm này.</p>
+            {% endif %}
+        </div>
+        
+        
+    </main>
+
+    
+
+    <script src="/static/js/thu.js"></script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/qldonhang.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="pcoded-navbar"> 
+        <div class="navbar-wrapper">
+            <div class="navbar-content scroll-div">
+                <div class="">
+                    <div class="main-menu-header">
+                        <!-- Thông tin quản trị viên (nếu cần) -->
+                        Quản trị viên
+                    </div>
+                </div>
+                <ul class="nav pcoded-inner-navbar">
+                    <!-- Bảng điều khiển -->
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Điều hướng</label>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/admin/" class="nav-link">
+                            <span class="pcoded-micon"></span>
+                            <span class="pcoded-mtext">Bảng điều khiển</span>
+                        </a>
+                    </li>
+                    <!-- Mục quản lý -->
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Quản lý</label>
+                    </li>
+                    <!-- Quản lý danh mục -->
+                    <li class="nav-item management-item">                        
+                        <a href="/admin/category" class="nav-link">
+                            <span class="pcoded-micon"></span>
+                            <span class="pcoded-mtext">Quản lý danh mục</span>
+                        </a>
+                    </li>
+                    <!-- Quản lý sản phẩm -->
+                    <li class="nav-item management-item">
+                        <a href="/admin/products" class="nav-link">
+                            <span class="pcoded-micon"></span>
+                            <span class="pcoded-mtext">Quản lý sản phẩm</span>
+                        </a>
+                    </li>
+                    <li class="nav-item management-item">
+                        <a href="/admin/users" class="nav-link"><span class="pcoded-micon"></span><span class="pcoded-mtext">Quản lý người dùng</span></a>
+                    </li>
+                    <li class="nav-item management-item">
+                        <a href="/admin/comments" class="nav-link"><span class="pcoded-micon"></span><span class="pcoded-mtext">Quản lý bình luận</span></a>
+                    </li>
+                    <li class="nav-item management-item">
+                        <a href="/admin/qldonhang" class="nav-link"><span class="pcoded-micon"></span><span class="pcoded-mtext">Quản lý đơn hàng</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="pcoded-main-container">
+    <section id="history-title">
+        <h1>Bình luận</h1>
+    </section>
+    <div class="history-container">
+        <table class="order-statuses">
+            <tr>
+                <th><a href="/admin/comment" class="filter-order-status">Tất cả</a></th>
+                {% for category in categories %}
+                <th><a href="/admin/comment/category/{{ category['category_id'] }}" class="filter-order-status">{{ category['name'] }}</a></th>
+                {% endfor %}
+            </tr>
+        </table>
+    
+        <table class="order-details">
+            <tr>
+                <th>Sản phẩm</th>
+                <th >Khách hàng</th>
+                <th >Điểm</th>
+                <th style="width: 800px;">Bình luận</th>
+                <th >Cảm xúc </th>
+                <th >Cảm xúc AI</th>
+                <th>Quản trị</th>
+                <th>Đánh giá quản trị</th>
+                <th style="width: 100px;">Ngày bình luận</th>
+            </tr>
+            {% for review in reviews %}
+            <tr>
+                <td>{{ review['name'] }}</td>
+                <td>{{ review['user_id'] }}</td>
+                <td>{{ review['rating'] }}</td>
+                <td>{{ review['comment'] }}</td>
+                <td>{{ review['sentiment'] }}</td>
+                <td>{{ review['sentiment_ai'] }}</td>
+                <td>{{ review['sentiment_ad'] }}</td>
+
+                <td>
+                    <form method="POST" style="display:inline;" action="/admin/update_admin_review/{{ review['id'] }}">
+                        <input type="hidden" name="review_id" value="{{ review['review_id'] }}">
+                        <select name="admin_sentiment">
+                            <option value="Tích cực" {% if review['admin_sentiment'] == 'Tích cực' %}selected{% endif %}>Tích cực</option>
+                            <option value="Trung lập" {% if review['admin_sentiment'] == 'Trung lập' %}selected{% endif %}>Trung lập</option>
+                            <option value="Tiêu cực" {% if review['admin_sentiment'] == 'Tiêu cực' %}selected{% endif %}>Tiêu cực</option>
+                        </select>
+                        <button type="submit">Cập nhật</button>
+                    </form>
+                    
+                </td>
+                <td>{{ review['created_at'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div class="nutdh" style="margin-left: 80%;">
+            <a href="/admin/comments"><button class="buy-now-btn">Quay lại</button></a>
+            {% if selected_category_id %}
+                <a href="{{ url_for('download_all_reviews', category_id=selected_category_id) }}" id="download-btn-category">
+                    <button class="buy-now-btn">Tải xuống (Danh mục)</button>
+                </a>
+            {% endif %}
+
+            {% if selected_product_id %}
+                <a href="{{ url_for('download_reviews', product_id=selected_product_id) }}" id="download-btn-product">
+                    <button class="buy-now-btn">Tải xuống (Sản phẩm)</button>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+    </div>
+</body>
+<script>
+    function updateDownloadLink(category_id, product_id) {
+        const downloadButton = document.getElementById('download-btn');
+        if (category_id) {
+            downloadButton.href = `/admin/download_all_reviews/${category_id}`;
+        } else if (product_id) {
+            downloadButton.href = `/admin/download_reviews/${product_id}`;
+        } else {
+            downloadButton.href = `/admin/download_all_reviews/`;
+        }
+    }
+
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('form').on('submit', function(event) {
+            event.preventDefault(); // Ngăn chặn tải lại trang
+
+            var form = $(this);
+            var actionUrl = form.attr('action'); // Lấy URL từ thuộc tính action của form
+
+            $.ajax({
+                type: 'POST',
+                url: actionUrl,
+                data: form.serialize(), // Chuyển đổi dữ liệu của form thành chuỗi
+                success: function(response) {
+                    if (response.success) {
+                    }
+                },
+                error: function() {
+                    alert('Đã xảy ra lỗi trong quá trình cập nhật.'); // Thông báo lỗi chung
+                }
+            });
+        });
+    });
+</script>
+
+</html>

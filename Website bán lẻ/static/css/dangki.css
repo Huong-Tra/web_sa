@@ -1,0 +1,584 @@
+
+body{
+  font-family: 'Be Vietnam Pro', sans-serif;
+
+}
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Căn giữa cho các phần tử bên trái và bên phải */
+  align-items: center;
+  background-color: #fff;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 600;
+  font-size: small;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+}
+
+/* Định dạng cho phần logo */
+.navbar .logo {
+  display: inline-block;
+  margin-right: -80px; /* Khoảng cách giữa logo và nav-links */
+
+}
+
+.navbar .logo img {
+  width: 50px;
+  height: 50px;
+}
+
+/* Định dạng cho phần menu */
+.navbar .nav-links {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: -100px; /* Tạo khoảng cách giữa menu và ô tìm kiếm */
+
+}
+
+.navbar .nav-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar .nav-links li {
+  display: inline-block;
+  margin: 10px 10px;
+  position: relative; /* Để submenu xuất hiện bên dưới */
+}
+
+.navbar .nav-links a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px;
+  transition: color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+  color: #007BFF;
+}
+
+.navbar .nav-links .sub-menu {
+  display: flex; /* Hiển thị submenu theo hàng ngang */
+  position: absolute;
+  display: none;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 500px; /* Giảm chiều rộng của submenu */
+}
+
+.navbar .nav-links .sub-menu1 {
+  display: flex; /* Thay đổi display thành flex */
+  flex-direction: column; /* Đặt hướng cột cho các item trong sub-menu1 */
+  display: none; /* Đặt mặc định là không hiển thị */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 200px; /* Giảm chiều rộng của submenu */
+}
+
+.navbar .nav-links .sub-menu li,
+.navbar .nav-links .sub-menu1 li {
+  display: block; /* Đặt hiển thị thành block */
+}
+
+.navbar .nav-links .sub-menu a,
+.navbar .nav-links .sub-menu1 a {
+  display: block; /* Đảm bảo a được hiển thị như block */
+  padding: 10px;
+  color: #333;
+  text-align: left; /* Căn trái cho nội dung */
+}
+
+.navbar .nav-links .sub-menu a:hover,
+.navbar .nav-links .sub-menu1 a:hover {
+  text-decoration: underline;
+}
+
+/* Hiển thị submenu khi hover vào item cha */
+.navbar .nav-links li:hover .sub-menu,
+.navbar .nav-links li:hover .sub-menu1 {
+  display: flex; /* Hiển thị submenu khi hover vào item cha */
+}
+
+/* Định dạng cho phần tìm kiếm */
+.navbar .search-box {
+  display: flex; /* Sử dụng flexbox để căn chỉnh */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  
+}
+
+.navbar .search-box input {
+  width: 300px; /* Chiều rộng của hộp tìm kiếm */
+  height: 30px; /* Chiều cao của hộp tìm kiếm */
+  padding: 5px 40px 5px 10px; /* Padding bên trái cho chữ và thêm padding bên phải cho biểu tượng */
+  border: 1px solid #ccc;
+  border-radius: 60px; /* Bo tròn viền */
+  background-color: #fff;
+}
+
+.navbar .search-box button {
+  position: absolute; /* Định vị tuyệt đối */
+  right: 19%; /* Đặt ở bên phải */
+  height: 40px; /* Chiều cao nút */
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%; /* Bo tròn viền nút */
+}
+
+.navbar .search-box button img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Định dạng cho phần giỏ hàng và tài khoản */
+.navbar .order-button {
+  display: flex;
+  align-items: center; /* Đảm bảo căn giữa theo chiều dọc */
+  margin-right: 60px;
+
+}
+
+
+.navbar .order-button a {
+  display: flex;
+  align-items: center;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.navbar .order-button img {
+  width: 30px;
+  height: 30px;
+}
+
+.navbar .taikhoan {
+  position: relative; /* Để menu xuất hiện bên dưới */
+  display: flex;
+  align-items: center;
+}
+
+.navbar .taikhoan a {
+  display: block;
+  padding: 10px;
+  color: #333;
+  text-align: left;
+  white-space: nowrap; /* Ngăn tên bị cắt thành nhiều dòng */
+  overflow: hidden; /* Ẩn phần tên thừa nếu dài hơn chiều rộng cố định */
+  text-overflow: ellipsis; /* Hiển thị dấu ba chấm nếu tên quá dài */
+  width: 150px; /* Đặt chiều rộng cố định cho khu vực hiển thị tên */
+}
+
+.navbar .taikhoan a:hover {
+  color: aqua;
+}
+
+.navbar .taikhoan ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  margin-top: 1px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 2000;
+}
+.search-icon,
+.cart-icon,
+.user-icon{
+    color:#000000;
+    font-size: 28px;
+    cursor: pointer;
+    margin: auto;
+    text-align: center;
+}
+.navbar .taikhoan li {
+  display: block;
+  margin-right: 0;
+  min-width: 110px;
+}
+
+/* Hiển thị menu tài khoản khi hover */
+.navbar .taikhoan:hover ul,
+.navbar .taikhoan ul:hover {
+  display: block;
+}
+a{
+    text-decoration:none;
+}
+.wrapper{
+  margin: 80px auto;
+  max-width: 430px;
+  width: 100%;
+  background: #fff;
+  padding: 34px;
+  
+}
+.wrapper h2{
+  position: relative;
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+}
+.wrapper h2::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 28px;
+  border-radius: 12px;
+  background: #0C713D;
+}
+.wrapper form{
+  margin-top: 30px;
+}
+.wrapper form .form-control{
+  margin: 8px 0;
+}
+.form-control label {
+	display: inline-block;
+	margin-bottom: 5px;
+}
+form .form-control input{
+  height: 50px;
+  width: 100%;
+  outline: none;
+  padding: 0 15px;
+  font-size: 17px;
+  font-weight: 400;
+  color: #333;
+  border: 1.5px solid #C7BEBE;
+  border-bottom-width: 2.5px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+.form-control input:focus{
+  border-color: #0C713D;
+}
+.form-control.success input {
+	border-color: #2ecc71;
+}
+.form-control.error input {
+	border-color: #e74c3c;
+}
+.form-control i {
+	visibility: hidden;
+	position: absolute;
+	top: 40px;
+	right: 10px;
+}
+.form-control small {
+	color: #e74c3c;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	visibility: hidden;
+}
+form h3{
+  color: #707070;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 10px;
+}
+.form-control.buttonn input{
+  margin-top: 10px;
+  color: #fff;
+  letter-spacing: 1px;
+  border: none;
+  background: #0C713D;
+  cursor: pointer;
+}
+.form-control.buttonn input:hover{
+  background: #A0D05C;
+}
+form .text h3{
+ color: #333;
+ width: 100%;
+ text-align: center;
+}
+form .text h3 a{
+  color: #0C713D;
+  text-decoration: none;
+}
+form .text h3 a:hover{
+  color: #A0D05C;
+  text-decoration: underline;
+}
+.section1{
+  width: 100%;
+  display: flex;
+  background-color: #A0D05C;
+  margin: 5% auto;
+}
+.section1 .d3{
+  display: flex;
+  flex: 45%;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.maybay img{
+  position: relative;
+  left: 50px;
+}
+.mb img{
+    transform: rotate(-360deg);
+}
+.section1 .d1{
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  background-color: #0C713D;
+  width: 55%;
+  border: 3px dashed #A0D05C;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.section1 .title-1{
+    background: #FFFFFF;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    color: #A0D05C;
+    border: 0.25px solid #A0D05C;
+    text-shadow: -3px 0px 0px #0C713D;
+    margin-top: 4%;
+}
+.section1 .sub-title-1{
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(14px, 1.5vw, 16px);
+    color: #FFFFFF;
+}
+.section1 .d1 form{
+    width:70%;
+    display: flex;
+    flex-direction: column;
+    margin: 50px auto;
+}
+.section1 .d1 .input-group {
+  position:relative;
+  height: 53px;
+}
+.section1 .d1 .input-group2{
+  position:relative;
+  height: 53px;
+}
+ .section1 .d1 input{
+  width:100%;
+  padding:20px;
+  outline:0;
+  border: none;
+  border-radius: 27px;
+  font-size: clamp(15px, 2vw, 20px);
+  height: 53px;
+}
+.section1 .d1 #tieude{
+  width: 208%;
+}
+.section1 .d1 textarea{
+  width: clamp(19.5rem, 38vw, 500rem);
+  padding:20px;
+  outline:0;
+  border: 1px solid#fff;
+  border-radius: 27px;
+  background-color: #FAF7EE;
+  font-size: clamp(15px, 2vw, 20px);
+  height:150px ;
+}
+.section1 .d1 label{
+    height:50%;
+    position: absolute;
+    left:15px;
+    top:10px;
+    padding:3px;
+    color:#0C713D;
+    cursor:text;
+    font-size: clamp(15px, 2vw, 18px);
+    transition: top .3s;
+    pointer-events: none;
+}
+.section1 .d1 select{
+    width:100%;
+    padding:15px;
+    outline:0;
+    border: 1px solid#fff;
+    border-radius: 27px;
+    background-color: #FAF7EE;
+    font-size: clamp(15px, 2vw, 18px);
+    height: 53px;
+}
+.section1 .d1 input:focus ~ label,  .section1 .d1 input:valid ~ label{
+    top:-3px;
+    left:20px;
+    font-size: 14px;
+    background-color:transparent;
+}
+.section1 .d1 textarea:focus ~ label{
+  top:-3px;
+  left:20px;
+  font-size: 14px;
+  background-color:transparent;
+}
+.section1 .d1 textarea:valid ~ label{
+  top:-3px;
+  left:20px;
+  font-size: 14px;
+  background-color:transparent;
+}
+.section1 .d1 .a{
+  padding: 10px 20px;
+  background: #FAF7EE;
+  border: 1px dashed #000000;
+  border-radius: 20px;
+  cursor: pointer;
+  margin: 30px auto;
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
+  font-size: clamp(17px, 2vw, 20px);
+  color: #0C713D;
+}
+.section1 .d1 .a:hover{
+    background: #A0D05C;
+    color: #FAF7EE;
+}
+.g1{
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(12px, 1.5vw, 18px);
+  text-align: center;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+}
+.d4{
+  box-sizing: border-box;
+  position: relative;
+  width: 448px;
+  height: 413px;
+  left: -52%;
+  margin-top: -700px;
+  float:right;
+  background: #F4F1E8;
+  border: 2px dashed #000000;
+  box-shadow: -10px 10px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-wrap: wrap;
+  text-size-adjust: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+.d4 .t8 {
+    position: absolute;
+    font-style: normal;
+    font-weight: 700;
+    font-size: clamp(16px, 4vw,32px);
+    font-size: 32px;
+    line-height: 39px;
+    margin-top: -300px;
+    color: #0C713D;
+    margin-left: -348px;
+    border: 0.25px solid #000000;
+    text-shadow: -3px 0px 0px #000000;
+    border: 0;
+}
+.d4 .v{
+   position: absolute;
+    width: 74px;
+    height: 45px;
+    left: 448px;
+    top: 1001px;
+    margin-top: -956px;
+    background: #FFB0B0;
+    opacity: 0.75;
+    margin-left: -283px;
+}
+.d4 .t2{
+  width: 338px;
+  height: 168px;
+  margin-top: 0px;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 28px;
+  text-align: justify;
+  margin-left: 0px;
+  color: #000000;
+}
+.d4 .icon1{
+    position: absolute;
+    width: 73.73px;
+    height: 73.73px;
+    left: 300px;
+    top: 300px;
+}
+.section-2{
+    width: 100%;
+    margin:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.section-2 .d2{
+    margin-bottom: 8%;
+    border: 3px dashed #000000;
+  }
+.section-2 .d2 .cangiua{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.section-2 .d2 .t3{
+    position: absolute;
+    font-weight: 700;
+    font-size: 40px;
+    display: flex;
+    margin-top: 20px;
+    color: #0C713D;
+    border: 0.25px solid #000000;
+    text-shadow: -3px 0px 0px #000000;
+    border:0;
+}
+.section-2 .d2 .logo1{
+    position: absolute;
+    width: 94.8px;
+    height: 74.38px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 80px;
+}
+.section-2 .d2 .anh{
+    position: absolute;
+    width: 94.8px;
+    height: 74.38px;
+    margin-left: 900px;
+    margin-top: 20px;
+}
+.section-2 .d2 .table{
+    width:100%;
+    margin-left: 50px;
+    margin-top: 120px;
+}
+
+.section-2 .d2 .table td{
+padding: 15px 25px;
+}
+
+ .section-2 .d2 .table td img{
+padding: 0px 10px;
+}

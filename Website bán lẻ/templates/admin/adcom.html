@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý Đánh giá Sản phẩm</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/static/css/adcom.css ">
+</head>
+<body>
+
+    <!-- Thanh điều hướng -->
+    <nav class="pcoded-navbar">
+        <div class="navbar-wrapper">
+            <div class="navbar-content scroll-div">
+                <div class="main-menu-header">
+                    Quản trị viên
+                </div>
+                <ul class="nav pcoded-inner-navbar">
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Điều hướng</label>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/admin/" class="nav-link">
+                            <span class="pcoded-micon"></span>
+                            <span class="pcoded-mtext">Bảng điều khiển</span>
+                        </a>
+                    </li>
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Quản lý</label>
+                    </li>
+                    <li class="nav-item management-item">
+                        <a href="/admin/category" class="nav-link">
+                            <span class="pcoded-micon"></span>
+                            <span class="pcoded-mtext">Quản lý danh mục</span>
+                        </a>
+                    </li>
+                    <li class="nav-item management-item">
+                        <a href="/admin/products" class="nav-link">
+                            <span class="pcoded-micon"></span>
+                            <span class="pcoded-mtext">Quản lý sản phẩm</span>
+                        </a>
+                    </li>
+                    <li class="nav-item management-item">
+                        <a href="/admin/users" class="nav-link">
+                            <span class="pcoded-micon"></span>
+                            <span class="pcoded-mtext">Quản lý người dùng</span>
+                        </a>
+                    </li>
+                    <li class="nav-item management-item">
+                        <a href="/admin/comments" class="nav-link">
+                            <span class="pcoded-micon"></span>
+                            <span class="pcoded-mtext">Quản lý bình luận</span>
+                        </a>
+                    </li>
+                    <li class="nav-item management-item">
+                        <a href="/admin/qldonhang" class="nav-link">
+                            <span class="pcoded-micon"></span>
+                            <span class="pcoded-mtext">Quản lý đơn hàng</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Nội dung chính -->
+    <div class="pcoded-main-container">
+        <h1>Quản lý Đánh giá Sản phẩm</h1>
+    
+        <!-- Hiển thị danh mục -->
+        <div class="category-container">
+            <h2>Danh mục</h2>
+            <ul class="category-list">
+                <li><a href="{{ url_for('admin_comments') }}">Tất cả</a></li>
+                {% for category in categories %}
+                    <li>
+                        <a href="{{ url_for('admin_comments', category_id=category['category_id']) }}">{{ category['name'] }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    <div class="tongquan">
+        <!-- Hiển thị số lượng đánh giá -->
+         <div class="tq1">
+        <h2>Tổng số đánh giá: {{ total_reviews }}</h2>
+        {% if total_reviews > 0 %}
+            <p>Số đánh giá Tích cực: {{ sentiment_counts['Tích cực'] }}</p>
+            <p>Số đánh giá Trung lập: {{ sentiment_counts['Trung lập'] }}</p>
+            <p>Số đánh giá Tiêu cực: {{ sentiment_counts['Tiêu cực'] }}</p>
+        {% else %}
+            <p>Chưa có đánh giá nào.</p>
+        {% endif %}
+        <button><a href="{{ url_for('admin_commentss',category_id=selected_category_id) }}">Xem chi tiết</a></button>
+    </div>
+        <!-- Tỉ lệ đánh giá toàn bộ -->
+        <h2>Tỉ lệ Đánh giá Toàn bộ</h2>
+        <div id="pieChartContainer">
+            <canvas id="pieChart"></canvas>
+        </div>
+    </div>
+    <h2>Danh sách Sản phẩm</h2>
+        <table>
+            <tr>
+                <th>Tên sản phẩm</th>
+                <th>Mô tả</th>
+                <th>Giá</th>
+                <th>Danh mục</th>
+                <th>Đánh giá quản trị</th>
+                <th>Biểu đồ đánh giá</th>
+            </tr>
+            {% for product in products %}
+            <tr>
+                <td>{{ product['name'] }}</td>
+                <td>{{ product['description'] }}</td>
+                <td>{{ product['price'] }}</td>
+                <td>{{ product['category_name'] }}</td>
+                <td>
+                    <input type="hidden" name="product_id" value="{{ product['product_id'] }}">
+                    <button type="button"><a href="{{ url_for('admin_commentss',product_id=product['product_id']) }}">Xem bình luận</a></button>
+                </td>
+                
+                <td>
+                    {% if product['sentiment_counts']['Tích cực'] > 0 or product['sentiment_counts']['Trung lập'] > 0 or product['sentiment_counts']['Tiêu cực'] > 0 %}
+                    <canvas id="pieChart{{ product['product_id'] }}" class="pieChart"width="200" height="150"></canvas>
+                    {% else %}
+                        <p >Chưa có đánh giá</p>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        
+        
+    
+        <!-- Nút trở về -->
+        <a href="{{ url_for('admin_comments') }}">Trở về danh sách sản phẩm</a>
+    </div>
+    
+    <script>
+        var ctx = document.getElementById('pieChart').getContext('2d');
+        var pieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Tích cực', 'Trung lập', 'Tiêu cực'],
+                datasets: [{
+                    data: [
+                        {{ sentiment_counts['Tích cực'] | default(0) }},
+                        {{ sentiment_counts['Trung lập'] | default(0) }},
+                        {{ sentiment_counts['Tiêu cực'] | default(0) }}
+                    ],
+                    backgroundColor: ['#36A2EB', '#FFCE56', '#FF6384']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                var dataset = tooltipItem.chart.data.datasets[tooltipItem.datasetIndex];
+                                var total = dataset.data.reduce((previousValue, currentValue) => previousValue + currentValue, 0);
+                                var currentValue = dataset.data[tooltipItem.dataIndex];
+                                var percentage = Math.round((currentValue / total) * 100);
+                                return currentValue + ' (' + percentage + '%)';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+        {% for product in products %}
+            var canvas = document.getElementById('pieChart{{ product['product_id'] }}');
+            if (canvas) {
+                var ctx{{ product['product_id'] }} = canvas.getContext('2d');
+                var pieChart{{ product['product_id'] }} = new Chart(ctx{{ product['product_id'] }}, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Tích cực', 'Trung lập', 'Tiêu cực'],
+                        datasets: [{
+                            data: [
+                                {{ product['sentiment_counts']['Tích cực'] | default(0) }},
+                                {{ product['sentiment_counts']['Trung lập'] | default(0) }},
+                                {{ product['sentiment_counts']['Tiêu cực'] | default(0) }}
+                            ],
+                            backgroundColor: ['#36A2EB', '#FFCE56', '#FF6384']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(tooltipItem) {
+                                        var dataset = tooltipItem.chart.data.datasets[tooltipItem.datasetIndex];
+                                        var total = dataset.data.reduce((previousValue, currentValue) => previousValue + currentValue, 0);
+                                        var currentValue = dataset.data[tooltipItem.dataIndex];
+                                        var percentage = Math.round((currentValue / total) * 100);
+                                        return currentValue + ' (' + percentage + '%)';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        {% endfor %}
+    });
+    </script>
+    <script>
+        function updateDownloadLink(category_id) {
+        const downloadButton = document.getElementById('download-btn');
+        if (category_id) {
+            downloadButton.href = `/admin/comment/${category_id}`;
+        } else {
+            downloadButton.href = `/admin/comment/`;
+        }
+    }
+    
+    </script>
+    
+    
+
+</body>
+</html>

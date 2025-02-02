@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/lsdh.css">
+    <title>Lịch Sử Đơn Hàng</title>
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <i class='bx bx-menu'></i>
+            <div class="logo">
+                <a href="/"><img src="logo1.svg" alt="Logo"></a>
+            </div>
+            <div class="nav-links">
+                <ul class="links">
+                    <!-- DI ĐỘNG -->
+                    <li>
+                        <a href="/categories/1">DI ĐỘNG</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="#">Hãng sản xuất</a>
+                                <ul class="sub">
+                                    <li><a href="apple.html">IPHONE</a></li>
+                                    <li><a href="samsung.html">SAMSUNG</a></li>
+                                    <li><a href="oppo.html">OPPO</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Mức giá</a>
+                                <ul class="sub">
+                                    <li><a href="#">Dưới 10 triệu</a></li>
+                                    <li><a href="#">Từ 10 - 20 triệu</a></li>
+                                    <li><a href="#">Trên 20 triệu</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Hình ảnh</a>
+                                <ul class="sub">
+                                    <li><a href="apple.html"><img src="apple.jpg" alt=""> A</a></li>
+                                    <li><a href="samsung.html"><img src="samsung.jpg" alt=""> B</a></li>
+                                    <li><a href="oppo.html"><img src="oppo.jpg" alt=""> C</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+        
+                    <!-- MÁY TÍNH BẢNG -->
+                    <li>
+                        <a href="/categories/2">MÁY TÍNH BẢNG</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="#">Hãng sản xuất</a>
+                                <ul class="sub">
+                                    <li><a href="apple.html">IPHONE</a></li>
+                                    <li><a href="samsung.html">SAMSUNG</a></li>
+                                    <li><a href="oppo.html">OPPO</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Mức giá</a>
+                                <ul class="sub">
+                                    <li><a href="#">Dưới 10 triệu</a></li>
+                                    <li><a href="#">Từ 10 - 20 triệu</a></li>
+                                    <li><a href="#">Trên 20 triệu</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Hình ảnh</a>
+                                <ul class="sub">
+                                    <li><a href="apple.html"><img src="apple.jpg" alt=""> A</a></li>
+                                    <li><a href="samsung.html"><img src="samsung.jpg" alt=""> B</a></li>
+                                    <li><a href="oppo.html"><img src="oppo.jpg" alt=""> C</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+        
+                    <!-- PHỤ KIỆN -->
+                    <li>
+                        <a href="/categories/3">PHỤ KIỆN</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="#">Nhẫn</a>
+                                <ul class="sub">
+                                    <li><a href="nhan.html">Nhẫn</a></li>
+                                    <li><a href="dongho.html">Đồng hồ thông minh</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Đồng hồ thông minh</a>
+                                <ul class="sub">
+                                    <li><a href="nhan.html">Nhẫn</a></li>
+                                    <li><a href="dongho.html">Đồng hồ thông minh</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Âm thanh</a>
+                                <ul class="sub">
+                                    <li><a href="nhan.html">Nhẫn</a></li>
+                                    <li><a href="dongho.html">Đồng hồ thông minh</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+        
+                    <!-- ƯU ĐÃI -->
+                    <li>
+                        <a href="uudai.html">ƯU ĐÃI</a>
+                        <ul class="sub-menu1">
+                            <li><a href="#">Mới</a></li>
+                            <li><a href="#">Deal hot</a></li>
+                            <li><a href="#">Độc quyền</a></li>
+                        </ul>
+                    </li>
+        
+                    <!-- HỖ TRỢ -->
+                    <li>
+                        <a href="hotro.html">HỖ TRỢ</a>
+                        <ul class="sub-menu1">
+                            <li><a href="#">Bảo hành và sửa chữa</a></li>
+                            <li><a href="#">Hỗ trợ sản phẩm</a></li>
+                        </ul>
+                    </li>
+        
+                    <li><a href="cuahang.html">CỬA HÀNG</a></li>
+                </ul>
+            </div>
+        
+        
+            
+            <!-- Order and Account Section -->
+            <div class="order-button">
+                <a href="giohang.html"><a href="/cart"><label class="cart-icon"><i class="fas fa-shopping-cart"></i></label></a>
+                <div class="taikhoan"> <label class="user-icon"><i class="fas fa-user"></i></label>
+                    {% if session['email'] %}
+                        <a href="taikhoan.html">{{ session['username'] }}</a>
+                        <ul>
+                            <li><a href="/lichsudonhang">Đơn hàng</a></li>
+                            <li><a href="/logout">Đăng xuất</a></li>
+                        </ul>
+                    {% else %}
+                        <a href="taikhoan.html"></a>
+                        <ul>
+                            <li><a href="#">Chào mừng bạn </a></li>
+                            <li><a href="/dangnhap">Đăng nhập/Đăng kí</a></li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section id="history-title">
+        <h1>Lịch sử đơn hàng</h1>
+    </section>
+    <div class="history-container">
+        <table class="order-statuses">
+            <tr>
+                <th><a href="/lichsudonhang/" class="filter-order-status">Tất cả</a></th>
+                {% for status in order_statuses %}
+                <th><a href="/lichsudonhang/{{ status.status_id }}" class="filter-order-status">{{ status.status_name }}</a></th>
+                {% endfor %}
+            </tr>
+        </table>
+    
+        <table class="order-details">
+            <tr>
+                <th>ID</th>
+                <th>Ngày đặt</th>
+                <th>Tổng tiền</th>
+                <th>Trạng thái</th>
+                <th>Hành động</th> <!-- Thêm cột Hành động -->
+                <th>Xem chi tiết</th>
+            </tr>
+            {% if orders %}
+              {% for order in orders %}
+                <tr>
+                    <td>{{ order.order_id }}</td>
+                    <td>{{ order.created_at }}</td>
+                    <td>{{ order.total_amount }} đ</td>
+                    <td>{{ order.status_name }}</td>
+                    <td>
+                        {% if order.status_name == 'Chờ xác nhận' %}
+                            <form action="/huydon/{{ order.order_id }}/" method="POST" style="display:inline;">
+                                <button type="submit" class="huydonhang">Hủy đơn</button>
+                            </form>
+                        {% elif order.status_name == 'Đang giao' %}
+                            <form action="/nhanhang/{{ order.order_id }}/" method="POST" style="display:inline;">
+                                <button type="submit" class="nhanhang">Nhận hàng</button>
+                            </form>
+                        {% elif order.status_name == 'Giao thành công' %}
+                            <a href="/donhang/{{ order.order_id }}/danhgia" class="danhgia">Đánh giá</a> <!-- Nút đánh giá -->
+                        {% elif order.status_name == 'Đã đánh giá' %}
+                            <a href="/donhang/{{ order.order_id }}/suadanhgia" class="sdanhgia"> Sửa đánh giá</a> <!-- Nút sửa đánh giá -->
+                        {% endif %}
+                    </td>
+                    <td><a href="/donhang/{{ order.order_id }}" class="xemdonhang">Xem</a></td>
+                </tr>
+              {% endfor %}
+            {% else %}
+              <tr>
+                <td colspan="7">Không có đơn hàng nào.</td>
+              </tr>
+            {% endif %}
+        </table>
+    </div>
+</body>
+</html>

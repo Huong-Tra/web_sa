@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý Sản phẩm</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Thêm CSS tùy chỉnh của bạn */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa; /* Màu nền nhẹ cho trang */
+        }
+
+        h1, h2 {
+            text-align: center; /* Căn giữa tiêu đề */
+            margin-top: 20px;
+            color: #333; /* Màu chữ */
+        }
+
+        /* Định dạng cho danh sách */
+        ul {
+            list-style-type: none; /* Bỏ dấu chấm ở danh sách */
+            padding: 0; /* Bỏ padding mặc định */
+        }
+
+        /* Định dạng cho mỗi mục danh sách */
+        li {
+            text-align: center; /* Căn giữa cho các mục */
+            margin: 5px 0; /* Khoảng cách giữa các mục */
+        }
+
+        /* Định dạng cho bảng */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px; /* Khoảng cách phía trên bảng */
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center; /* Căn giữa nội dung bảng */
+        }
+
+        form {
+            margin: 0;
+        }
+
+        /* Định dạng cho modal */
+        .modal-body {
+            padding: 20px; /* Padding cho nội dung modal */
+        }
+
+        /* Định dạng cho hình ảnh trong bảng */
+        img {
+            max-width: 100px; /* Giới hạn kích thước hình ảnh */
+            height: auto; /* Tự động điều chỉnh chiều cao */
+        }
+
+        /* Định dạng cho nút xóa */
+        button[type="submit"] {
+            background-color: #dc3545; /* Màu nền cho nút xóa */
+            color: white; /* Màu chữ trắng */
+            border: none; /* Bỏ viền */
+            padding: 5px 10px; /* Padding cho nút */
+            border-radius: 5px; /* Bo góc cho nút */
+            cursor: pointer; /* Đổi con trỏ khi hover */
+        }
+
+        button[type="submit"]:hover {
+            background-color: #c82333; /* Màu nền khi hover */
+        }
+
+        /* Định dạng cho thanh điều hướng */
+        .pcoded-navbar {
+            background-color: #FAF7EE; /* Màu nền cho navbar */
+            color: #333; /* Màu chữ cho navbar */
+            width: 235px; /* Chiều rộng của navbar */
+            position: fixed; /* Giữ thanh điều hướng ở vị trí cố định */
+            top: 0;
+            left: 0;
+            height: 100%; /* Chiều cao 100% cho navbar */
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Đổ bóng cho navbar */
+            overflow-y: auto; /* Thêm cuộn nếu cần */
+            z-index: 1000; /* Đặt z-index cao để không bị chồng lên */
+        }
+
+        /* Định dạng cho phần tiêu đề trong navbar */
+        .main-menu-header {
+            padding: 20px; /* Khoảng cách cho tiêu đề */
+            text-align: center; /* Căn giữa tiêu đề */
+            font-weight: bold; /* Chữ đậm cho tiêu đề */
+            font-size: 18px; /* Kích thước chữ */
+        }
+
+        /* Định dạng cho danh sách điều hướng */
+        .pcoded-inner-navbar {
+            list-style-type: none; /* Bỏ dấu chấm ở danh sách */
+            padding: 0; /* Bỏ padding mặc định */
+        }
+
+        /* Định dạng cho các mục điều hướng */
+        .nav-item {
+            position: relative; /* Định vị các mục điều hướng */
+        }
+
+        /* Định dạng cho các liên kết trong navbar */
+        .nav-link {
+            display: flex; /* Dùng flexbox để căn chỉnh nội dung */
+            align-items: center; /* Căn giữa theo chiều dọc */
+            padding: 10px 20px; /* Khoảng cách cho các liên kết */
+            color: #333; /* Màu chữ của liên kết */
+            text-decoration: none; /* Bỏ gạch chân */
+            transition: background 0.3s; /* Hiệu ứng chuyển đổi cho nền */
+        }
+
+        /* Hiệu ứng khi di chuột qua các liên kết */
+        .nav-link:hover {
+            background-color: #e0e0e0; /* Màu nền khi hover */
+        }
+
+        /* Định dạng cho tiêu đề trong menu */
+        .pcoded-menu-caption {
+            padding: 10px 20px; /* Khoảng cách cho tiêu đề menu */
+            font-size: 14px; /* Kích thước chữ cho tiêu đề */
+            color: #666; /* Màu chữ cho tiêu đề */
+        }
+
+        /* Định dạng cho các mục quản lý */
+        .management-item {
+            border-bottom: 1px solid #f0f0f0; /* Đường viền dưới cho các mục */
+        }
+
+        /* Định dạng cho biểu tượng (nếu cần) */
+        .pcoded-micon {
+            margin-right: 10px; /* Khoảng cách giữa biểu tượng và chữ */
+        }
+
+        /* Đảm bảo nội dung chính không bị che khuất */
+        .pcoded-main-container {
+            margin-left: 235px; /* Đặt lề trái cho nội dung chính */
+            padding: 20px; /* Thêm padding cho nội dung chính */
+        }
+    </style>
+</head>
+<body>
+    <nav class="pcoded-navbar"> 
+        <div class="navbar-wrapper">
+            <div class="navbar-content scroll-div">
+                <div class="">
+                    <div class="main-menu-header">
+                        <!-- Thông tin quản trị viên (nếu cần) -->
+                        Quản trị viên
+                    </div>
+                </div>
+                <ul class="nav pcoded-inner-navbar">
+                    <!-- Bảng điều khiển -->
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Điều hướng</label>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/admin/" class="nav-link">
+                            <span class="pcoded-micon"></span>
+                            <span class="pcoded-mtext">Bảng điều khiển</span>
+                        </a>
+                    </li>
+                    <!-- Mục quản lý -->
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Quản lý</label>
+                    </li>
+                    <!-- Quản lý danh mục -->
+                    <li class="nav-item management-item">                        
+                        <a href="/admin/category" class="nav-link">
+                            <span class="pcoded-micon"></span>
+                            <span class="pcoded-mtext">Quản lý danh mục</span>
+                        </a>
+                    </li>
+                    <!-- Quản lý sản phẩm -->
+                    <li class="nav-item management-item">
+                        <a href="/admin/products" class="nav-link">
+                            <span class="pcoded-micon"></span>
+                            <span class="pcoded-mtext">Quản lý sản phẩm</span>
+                        </a>
+                    </li>
+                    <li class="nav-item management-item">
+                        <a href="/admin/users" class="nav-link"><span class="pcoded-micon"></span><span class="pcoded-mtext">Quản lý người dùng</span></a>
+                    </li>
+                    <li class="nav-item management-item">
+                        <a href="/admin/comments" class="nav-link"><span class="pcoded-micon"></span><span class="pcoded-mtext">Quản lý bình luận</span></a>
+                    </li>
+                    <li class="nav-item management-item">
+                        <a href="/admin/qldonhang" class="nav-link"><span class="pcoded-micon"></span><span class="pcoded-mtext">Quản lý đơn hàng</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pcoded-main-container">
+        <h1>Quản lý Sản phẩm</h1>
+
+        <!-- Hiển thị danh mục -->
+        <h2>Danh mục</h2>
+        <ul>
+            <li><a href="{{ url_for('admin_products') }}">Tất cả</a></li>
+            {% for category in categories %}
+                <li>
+                    <a href="{{ url_for('admin_products', category_id=category['category_id']) }}">{{ category['category_name'] }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Nút Thêm Sản phẩm -->
+        <h2>Thêm Sản phẩm</h2>
+        <div class="text-center">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#addProductModal">Thêm sản phẩm</button>
+        </div>
+
+        <!-- Bảng sản phẩm -->
+        <h2>Danh sách Sản phẩm</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên</th>
+                    <th>Giá</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product['id'] }}</td>
+                        <td>{{ product['name'] }}</td>
+                        <td>{{ product['price'] }}</td>
+                        <td>
+                            <form method="POST" action="{{ url_for('delete_product', product_id=product['id']) }}" style="display:inline;">
+                                <button type="submit" class="btn btn-danger">Xóa</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal Thêm Sản phẩm -->
+    <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addProductModalLabel">Thêm Sản phẩm Mới</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{ url_for('add_product') }}">
+                        <div class="form-group">
+                            <label for="productName">Tên Sản phẩm</label>
+                            <input type="text" class="form-control" id="productName" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productPrice">Giá</label>
+                            <input type="number" class="form-control" id="productPrice" name="price" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Thêm Sản phẩm</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

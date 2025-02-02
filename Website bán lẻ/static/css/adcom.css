@@ -1,0 +1,110 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid #ddd;
+}
+th, td {
+    padding: 8px;
+}
+form {
+    margin: 0;
+}
+#pieChart {
+    width: 300px !important;
+    height: 300px !important;
+}
+.barChart {
+    width: 300px !important;
+    height: 100px !important;
+}
+.category-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.category-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin-left: 20px;
+}
+.category-list li {
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+.category-list a {
+    text-decoration: none;
+    color: black;
+}
+.category-list a:hover {
+    text-decoration: underline;
+}
+
+.pcoded-navbar {
+    background-color: #FAF7EE;
+    color: #333;
+    width: 235px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.main-menu-header {
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.pcoded-inner-navbar {
+    list-style-type: none;
+    padding: 0;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.nav-link:hover {
+    background-color: #e0e0e0;
+}
+
+.pcoded-menu-caption {
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.management-item {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.pcoded-micon {
+    margin-right: 10px;
+}
+
+.pcoded-main-container {
+    margin-left: 235px;
+    padding: 20px;
+}
+.tongquan{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20%;
+}

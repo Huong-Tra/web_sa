@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <i class='bx bx-menu'></i>
+            <div class="logo">
+                <a href="/"><img src="logo1.svg" alt="Logo"></a>
+            </div>
+            <div class="nav-links">
+                <ul class="links">
+                    <!-- DI ĐỘNG -->
+                    <li>
+                        <a href="/categories/1">DI ĐỘNG</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="#">Hãng sản xuất</a>
+                                <ul class="sub">
+                                    <li><a href="apple.html">IPHONE</a></li>
+                                    <li><a href="samsung.html">SAMSUNG</a></li>
+                                    <li><a href="oppo.html">OPPO</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Mức giá</a>
+                                <ul class="sub">
+                                    <li><a href="#">Dưới 10 triệu</a></li>
+                                    <li><a href="#">Từ 10 - 20 triệu</a></li>
+                                    <li><a href="#">Trên 20 triệu</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Hình ảnh</a>
+                                <ul class="sub">
+                                    <li><a href="apple.html"><img src="apple.jpg" alt=""> A</a></li>
+                                    <li><a href="samsung.html"><img src="samsung.jpg" alt=""> B</a></li>
+                                    <li><a href="oppo.html"><img src="oppo.jpg" alt=""> C</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+        
+                    <!-- MÁY TÍNH BẢNG -->
+                    <li>
+                        <a href="/categories/2">MÁY TÍNH BẢNG</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="#">Hãng sản xuất</a>
+                                <ul class="sub">
+                                    <li><a href="apple.html">IPHONE</a></li>
+                                    <li><a href="samsung.html">SAMSUNG</a></li>
+                                    <li><a href="oppo.html">OPPO</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Mức giá</a>
+                                <ul class="sub">
+                                    <li><a href="#">Dưới 10 triệu</a></li>
+                                    <li><a href="#">Từ 10 - 20 triệu</a></li>
+                                    <li><a href="#">Trên 20 triệu</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Hình ảnh</a>
+                                <ul class="sub">
+                                    <li><a href="apple.html"><img src="apple.jpg" alt=""> A</a></li>
+                                    <li><a href="samsung.html"><img src="samsung.jpg" alt=""> B</a></li>
+                                    <li><a href="oppo.html"><img src="oppo.jpg" alt=""> C</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+        
+                    <!-- PHỤ KIỆN -->
+                    <li>
+                        <a href="/categories/3">PHỤ KIỆN</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="#">Nhẫn</a>
+                                <ul class="sub">
+                                    <li><a href="nhan.html">Nhẫn</a></li>
+                                    <li><a href="dongho.html">Đồng hồ thông minh</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Đồng hồ thông minh</a>
+                                <ul class="sub">
+                                    <li><a href="nhan.html">Nhẫn</a></li>
+                                    <li><a href="dongho.html">Đồng hồ thông minh</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Âm thanh</a>
+                                <ul class="sub">
+                                    <li><a href="nhan.html">Nhẫn</a></li>
+                                    <li><a href="dongho.html">Đồng hồ thông minh</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+        
+                    <!-- ƯU ĐÃI -->
+                    <li>
+                        <a href="uudai.html">ƯU ĐÃI</a>
+                        <ul class="sub-menu1">
+                            <li><a href="#">Mới</a></li>
+                            <li><a href="#">Deal hot</a></li>
+                            <li><a href="#">Độc quyền</a></li>
+                        </ul>
+                    </li>
+        
+                    <!-- HỖ TRỢ -->
+                    <li>
+                        <a href="hotro.html">HỖ TRỢ</a>
+                        <ul class="sub-menu1">
+                            <li><a href="#">Bảo hành và sửa chữa</a></li>
+                            <li><a href="#">Hỗ trợ sản phẩm</a></li>
+                        </ul>
+                    </li>
+        
+                    <li><a href="cuahang.html">CỬA HÀNG</a></li>
+                </ul>
+            </div>
+        
+        
+            
+            <!-- Order and Account Section -->
+            <div class="order-button">
+                <a href="giohang.html"><a href="/cart"><label class="cart-icon"><i class="fas fa-shopping-cart"></i></label></a>
+                <div class="taikhoan"> <label class="user-icon"><i class="fas fa-user"></i></label>
+                    {% if session['email'] %}
+                        <a href="taikhoan.html">{{ session['username'] }}</a>
+                        <ul>
+                            <li><a href="/lichsudonhang">Đơn hàng</a></li>
+                            <li><a href="/logout">Đăng xuất</a></li>
+                        </ul>
+                    {% else %}
+                        <a href="taikhoan.html"></a>
+                        <ul>
+                            <li><a href="#">Chào mừng bạn </a></li>
+                            <li><a href="/dangnhap">Đăng nhập/Đăng kí</a></li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="image-success">
+        <img src="/static/images/success.png" alt="success">
+    </div>
+    <div class="notification-container">
+        <h2>Đánh giá thành công!</h2>
+        <p>Cảm ơn bạn đã đánh giá. Chúng tôi sẽ xem xét ý kiến của bạn và cải thiện dịch vụ của mình.</p>
+        <div class="buttons">
+            <a href="/lichsudonhang/" class="button">Xem lịch sử mua hàng</a>
+            <a href="/trangchu" class="button">Tiếp tục mua hàng</a>
+            <a href="/" class="button">Quay lại trang chủ</a>
+        </div>
+    </div>
+    <style>
+body{
+    font-family: 'Be Vietnam Pro', sans-serif;
+
+}
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Căn giữa cho các phần tử bên trái và bên phải */
+    align-items: center;
+    background-color: #fff;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-weight: 600;
+    font-size: small;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+}
+
+/* Định dạng cho phần logo */
+.navbar .logo {
+    display: inline-block;
+    margin-right: -80px; /* Khoảng cách giữa logo và nav-links */
+
+}
+
+.navbar .logo img {
+    width: 50px;
+    height: 50px;
+}
+
+/* Định dạng cho phần menu */
+.navbar .nav-links {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: -100px; /* Tạo khoảng cách giữa menu và ô tìm kiếm */
+
+}
+
+.navbar .nav-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar .nav-links li {
+    display: inline-block;
+    margin: 10px 10px;
+    position: relative; /* Để submenu xuất hiện bên dưới */
+}
+
+.navbar .nav-links a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+    color: #007BFF;
+}
+
+.navbar .nav-links .sub-menu {
+    display: flex; /* Hiển thị submenu theo hàng ngang */
+    position: absolute;
+    display: none;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 500px; /* Giảm chiều rộng của submenu */
+}
+
+.navbar .nav-links .sub-menu1 {
+    display: flex; /* Thay đổi display thành flex */
+    flex-direction: column; /* Đặt hướng cột cho các item trong sub-menu1 */
+    display: none; /* Đặt mặc định là không hiển thị */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 200px; /* Giảm chiều rộng của submenu */
+}
+
+.navbar .nav-links .sub-menu li,
+.navbar .nav-links .sub-menu1 li {
+    display: block; /* Đặt hiển thị thành block */
+}
+
+.navbar .nav-links .sub-menu a,
+.navbar .nav-links .sub-menu1 a {
+    display: block; /* Đảm bảo a được hiển thị như block */
+    padding: 10px;
+    color: #333;
+    text-align: left; /* Căn trái cho nội dung */
+}
+
+.navbar .nav-links .sub-menu a:hover,
+.navbar .nav-links .sub-menu1 a:hover {
+    text-decoration: underline;
+}
+
+/* Hiển thị submenu khi hover vào item cha */
+.navbar .nav-links li:hover .sub-menu,
+.navbar .nav-links li:hover .sub-menu1 {
+    display: flex; /* Hiển thị submenu khi hover vào item cha */
+}
+
+/* Định dạng cho phần tìm kiếm */
+.navbar .search-box {
+    display: flex; /* Sử dụng flexbox để căn chỉnh */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    
+}
+
+.navbar .search-box input {
+    width: 300px; /* Chiều rộng của hộp tìm kiếm */
+    height: 30px; /* Chiều cao của hộp tìm kiếm */
+    padding: 5px 40px 5px 10px; /* Padding bên trái cho chữ và thêm padding bên phải cho biểu tượng */
+    border: 1px solid #ccc;
+    border-radius: 60px; /* Bo tròn viền */
+    background-color: #fff;
+}
+
+.navbar .search-box button {
+    position: absolute; /* Định vị tuyệt đối */
+    right: 19%; /* Đặt ở bên phải */
+    height: 40px; /* Chiều cao nút */
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%; /* Bo tròn viền nút */
+}
+
+.navbar .search-box button img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Định dạng cho phần giỏ hàng và tài khoản */
+.navbar .order-button {
+    display: flex;
+    align-items: center; /* Đảm bảo căn giữa theo chiều dọc */
+    margin-right: 60px;
+
+}
+
+
+.navbar .order-button a {
+    display: flex;
+    align-items: center;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.navbar .order-button img {
+    width: 30px;
+    height: 30px;
+}
+
+.navbar .taikhoan {
+    position: relative; /* Để menu xuất hiện bên dưới */
+    display: flex;
+    align-items: center;
+}
+
+.navbar .taikhoan a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-align: left;
+    white-space: nowrap; /* Ngăn tên bị cắt thành nhiều dòng */
+    overflow: hidden; /* Ẩn phần tên thừa nếu dài hơn chiều rộng cố định */
+    text-overflow: ellipsis; /* Hiển thị dấu ba chấm nếu tên quá dài */
+    width: 150px; /* Đặt chiều rộng cố định cho khu vực hiển thị tên */
+}
+
+.navbar .taikhoan a:hover {
+    color: aqua;
+}
+
+.navbar .taikhoan ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    margin-top: 1px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 2000;
+}
+
+.navbar .taikhoan li {
+    display: block;
+    margin-right: 0;
+    min-width: 110px;
+}
+
+/* Hiển thị menu tài khoản khi hover */
+.navbar .taikhoan:hover ul,
+.navbar .taikhoan ul:hover {
+    display: block;
+}
+.image-success img{
+    display: flex;
+    width: 80px;
+    margin: auto;
+    margin-top: 50px;
+}
+.notification-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    margin: 2% auto;
+    margin-bottom: 80px;
+    background-color: #4caf50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 100%;
+}
+.notification-container h2 {
+    margin-top: 0;
+}
+.notification-container .buttons{
+    display: flex;
+    column-gap: 10px;
+    justify-content: center;
+}
+.notification-container .button {
+    background-color: #4caf50;
+    color: white;
+    border: 1px solid #fff;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 15px;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.notification-container .button:hover {
+    background-color: #ffffff;
+    color: #4caf50;
+    border: 1px solid #4caf50;
+}
+
+    </style>
+</body>
+</html>
+</body>
+</html>
